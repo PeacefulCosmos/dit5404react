@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class Message extends Component {
   constructor(props) {
     super(props);
-    console.log(this);
+
     this.state = {
       message: "This is an apple",
     };
@@ -23,7 +23,9 @@ class Message extends Component {
   };
 
   click = () => {
-    this.setState({ message: "subscribed" });
+    this.setState((prevState) => ({
+      message: prevState.message + " and it has been subscribed",
+    }));
   };
 }
 
