@@ -1,28 +1,28 @@
 import React, { useEffect } from "react";
 import { Menu, Icon } from "semantic-ui-react";
 
-const Paginator = ({ moviesPerPage, totalMovies, paginate }) => {
+const Paginator = ({
+  moviesPerPage,
+  totalMovies,
+  paginate,
+  previousPage,
+  nextPage,
+}) => {
   const pageNumbers = [];
-
-  //   useEffect(() => {})
 
   for (let i = 1; i <= Math.ceil(totalMovies / moviesPerPage); i++) {
     pageNumbers.push(i);
   }
 
-  console.log(paginate);
-
   return (
     <Menu floated="right" pagination>
-      <Menu.Item as="a" icon>
+      <Menu.Item onClick={() => previousPage()} icon>
         <Icon name="chevron left" />
       </Menu.Item>
       {pageNumbers.map((number) => (
-        <Menu.Item href="!#" onClick={paginate(number)}>
-          {number}
-        </Menu.Item>
+        <Menu.Item onClick={() => paginate(number)}>{number}</Menu.Item>
       ))}
-      <Menu.Item as="a" icon>
+      <Menu.Item onClick={() => nextPage()} icon>
         <Icon name="chevron right" />
       </Menu.Item>
     </Menu>
