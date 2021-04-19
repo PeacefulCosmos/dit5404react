@@ -12,15 +12,9 @@ function App() {
   const [{ data, loading, error }, refetch] = useAxios(
     `${environment.baseUrl.api}/movie`
   );
-  const [currentPage, setCurrentPage] = useState(1);
-  const [moviesPerPage, setMoviesPerPage] = useState(10);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error!</p>;
-
-  //current movie list
-  const indexOfLastMovie = currentPage * moviesPerPage;
-  const indexOfFirstMovie = indexOfLastMovie - moviesPerPage;
 
   return <MovieList movies={data} />;
 }

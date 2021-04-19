@@ -1,14 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { Table, Menu, Icon } from "semantic-ui-react";
+import Paginator from "../components/shared/paginator";
 
 function MovieList(props) {
   const [movies, setMovies] = useState(props.movies);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [moviesPerPage, setMoviesPerPage] = useState(10);
 
   useEffect(() => {
     setMovies(props.movies);
   }, [props.movies]);
-  console.log(props);
-  console.log(movies);
+
+  //current movie list
+  const indexOfLastMovie = currentPage * moviesPerPage;
+  const indexOfFirstMovie = indexOfLastMovie - moviesPerPage;
+  const currentMovies = movies.slice(indexOfFirstMovie, indexOfLastMovie);
+
+  //change page
+  const paginate = (pageNumber) => {
+    console.log(pageNumber);
+    return setCurrentPage(pageNumber);
+  };
 
   function getLeadingActor(actors) {
     let result = "";
@@ -28,7 +40,7 @@ function MovieList(props) {
         </Table.Row>
       </Table.Header>
       <Table.Body>
-        {movies.map((movie) => (
+        {currentMovies.map((movie) => (
           <Table.Row>
             <Table.Cell>{movie.title}</Table.Cell>
             <Table.Cell>{movie.category.toString()}</Table.Cell>
@@ -44,18 +56,11 @@ function MovieList(props) {
       <Table.Footer>
         <Table.Row>
           <Table.HeaderCell colSpan="3">
-            <Menu floated="right" pagination>
-              <Menu.Item as="a" icon>
-                <Icon name="chevron left" />
-              </Menu.Item>
-              <Menu.Item as="a">1</Menu.Item>
-              <Menu.Item as="a">2</Menu.Item>
-              <Menu.Item as="a">3</Menu.Item>
-              <Menu.Item as="a">4</Menu.Item>
-              <Menu.Item as="a" icon>
-                <Icon name="chevron right" />
-              </Menu.Item>
-            </Menu>
+            <Paginator
+              moviesPerPage={moviesPerPage}
+              totalMovies={movies.length}
+              paginate={paginate}
+            />
           </Table.HeaderCell>
         </Table.Row>
       </Table.Footer>
