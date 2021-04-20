@@ -1,6 +1,7 @@
 import React from "react";
 import { List } from "semantic-ui-react";
 
+// TODO: Destruct Props, too annoying -> props.xx props.xx props.xx, and clean code
 function Detail(props) {
   console.log(props);
 

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Menu, Icon } from "semantic-ui-react";
 
+// TODO: props: page, setPage, size, setSize
 const Paginator = ({
   moviesPerPage,
   totalMovies,
@@ -16,6 +17,7 @@ const Paginator = ({
 
   return (
     <Menu floated="right" pagination>
+      {/** TODO: use onClick={previousPage}, no argument is passed to the function */}
       <Menu.Item onClick={() => previousPage()} icon>
         <Icon name="chevron left" />
       </Menu.Item>

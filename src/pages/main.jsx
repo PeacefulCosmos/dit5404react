@@ -1,4 +1,6 @@
 import React from "react";
+// TODO: Named export is the best
+// import {} from 'somewhere';
 import Detail from "../components/movie/detail";
 import Poster from "../components/movie/poster";
 import Trailer from "../components/movie/trailer";

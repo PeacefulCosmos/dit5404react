@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Table, Menu, Icon, Image } from "semantic-ui-react";
 import { MovieCard } from "../components/movie/movieCard";
+// TODO: Named import -- best practice
 import Poster from "../components/movie/poster";
 import Paginator from "../components/shared/paginator";
 
@@ -14,11 +15,17 @@ function MovieList(props) {
   }, [props.movies]);
 
   //current movie list
+
+  // TODO: for much more clean code, create a custom hook for this, usePagination(movies, page, size);
+  // TODO: Pagination should be done by the backend
+  // but can be ignored this time...
   const indexOfLastMovie = currentPage * moviesPerPage;
   const indexOfFirstMovie = indexOfLastMovie - moviesPerPage;
   const currentMovies = movies.slice(indexOfFirstMovie, indexOfLastMovie);
   const totalMoviesPages = Math.ceil(movies.length / moviesPerPage);
 
+  // TODO: since pagination handler are not part of movie-list.js
+  // should put the logic inside paginatior.jsx
   //change page
   const paginate = (pageNumber) => {
     return setCurrentPage(pageNumber);
