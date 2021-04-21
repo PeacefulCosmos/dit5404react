@@ -2,40 +2,22 @@ import { useEffect, useState } from "react";
 import { Table } from "semantic-ui-react";
 import { MovieCard } from "../components/movie/MovieCard";
 import { Paginator } from "../components/shared/Paginator";
+import { usePaginator } from '../util/usePaginator'
 
 export const MovieList = (props) => {
   const [movies, setMovies] = useState(props.movies);
   const [currentPage, setCurrentPage] = useState(1);
-  const [moviesPerPage, setMoviesPerPage] = useState(5);
+  const [moviesPerPage] = useState(5);
 
   useEffect(() => {
     setMovies(props.movies);
   }, [props.movies]);
 
-  // TODO: for much more clean code, create a custom hook for this, usePagination(movies, page, size);
-  // TODO: Pagination should be done by the backend
-  // but can be ignored this time...
-  const indexOfLastMovie = currentPage * moviesPerPage;
-  const indexOfFirstMovie = indexOfLastMovie - moviesPerPage;
-  const currentMovies = movies.slice(indexOfFirstMovie, indexOfLastMovie);
-  const totalMoviesPages = Math.ceil(movies.length / moviesPerPage);
+  const {currentMovies, totalMoviesPages} = usePaginator(movies, currentPage, moviesPerPage)
 
-  // TODO: since pagination handler are not part of movie-list.js
-  // should put the logic inside paginatior.jsx
-  //change page
-  const paginate = (pageNumber) => {
+  const getCurrentPage = (pageNumber) => {
     return setCurrentPage(pageNumber);
-  };
-
-  //change page
-  const previousPage = () => {
-    if (currentPage !== 1) return setCurrentPage(currentPage - 1);
-  };
-
-  const nextPage = () => {
-    if (currentPage !== totalMoviesPages)
-      return setCurrentPage(currentPage + 1);
-  };
+  }
 
   return (
     <Table celled inverted selectable>
@@ -54,9 +36,9 @@ export const MovieList = (props) => {
             <Paginator
               moviesPerPage={moviesPerPage}
               totalMovies={movies.length}
-              paginate={paginate}
-              previousPage={previousPage}
-              nextPage={nextPage}
+              page={currentPage}
+              size={totalMoviesPages}
+              paginate={getCurrentPage}
             />
           </Table.HeaderCell>
         </Table.Row>
