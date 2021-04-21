@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { Table, Menu, Icon, Image } from "semantic-ui-react";
-import { MovieCard } from "../components/movie/movieCard";
-// TODO: Named import -- best practice
-import Poster from "../components/movie/poster";
-import Paginator from "../components/shared/paginator";
+import { useEffect, useState } from "react";
+import { Table } from "semantic-ui-react";
+import { MovieCard } from "../components/movie/MovieCard";
+import { Paginator } from "../components/shared/Paginator";
 
-function MovieList(props) {
+export const MovieList = (props) => {
   const [movies, setMovies] = useState(props.movies);
   const [currentPage, setCurrentPage] = useState(1);
   const [moviesPerPage, setMoviesPerPage] = useState(5);
@@ -13,8 +11,6 @@ function MovieList(props) {
   useEffect(() => {
     setMovies(props.movies);
   }, [props.movies]);
-
-  //current movie list
 
   // TODO: for much more clean code, create a custom hook for this, usePagination(movies, page, size);
   // TODO: Pagination should be done by the backend
@@ -67,6 +63,4 @@ function MovieList(props) {
       </Table.Footer>
     </Table>
   );
-}
-
-export default MovieList;
+};

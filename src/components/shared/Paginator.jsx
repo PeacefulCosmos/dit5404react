@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+
 import { Menu, Icon } from "semantic-ui-react";
 
 // TODO: props: page, setPage, size, setSize
-const Paginator = ({
+export const Paginator = ({
   moviesPerPage,
   totalMovies,
   paginate,
@@ -30,5 +30,3 @@ const Paginator = ({
     </Menu>
   );
 };
-
-export default Paginator;
