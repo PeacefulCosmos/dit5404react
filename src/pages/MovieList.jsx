@@ -23,7 +23,7 @@ export const MovieList = (props) => {
     <Table celled inverted selectable>
       <Table.Body>
         {currentMovies.map((movie) => (
-          <Table.Row>
+          <Table.Row key={movie.movie_id}>
             <Table.Cell>
               <MovieCard movie={movie} />
             </Table.Cell>

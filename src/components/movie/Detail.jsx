@@ -20,7 +20,7 @@ export const Detail = ({movie}) => {
     let date = new Date(year_of_release);
     return `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
   };
-
+  
   return (
     <List>
       <List.Item>
