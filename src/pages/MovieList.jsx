@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Table } from "semantic-ui-react";
 import { MovieCard } from "../components/movie/MovieCard";
 import { Paginator } from "../components/shared/Paginator";
-import { usePaginator } from '../util/usePaginator'
+import { usePaginator } from "../util/usePaginator";
 
 export const MovieList = (props) => {
   const [movies, setMovies] = useState(props.movies);
@@ -13,11 +13,15 @@ export const MovieList = (props) => {
     setMovies(props.movies);
   }, [props.movies]);
 
-  const {currentMovies, totalMoviesPages} = usePaginator(movies, currentPage, moviesPerPage)
+  const { currentMovies, totalMoviesPages } = usePaginator(
+    movies,
+    currentPage,
+    moviesPerPage
+  );
 
   const getCurrentPage = (pageNumber) => {
     return setCurrentPage(pageNumber);
-  }
+  };
 
   return (
     <Table celled inverted selectable>

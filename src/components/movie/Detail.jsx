@@ -1,8 +1,6 @@
-
 import { List } from "semantic-ui-react";
 
-export const Detail = ({movie}) => {
-  
+export const Detail = ({ movie }) => {
   const actors = movie.actor;
   const title = movie.title;
   const duration = movie.duration_of_movie;
@@ -11,8 +9,7 @@ export const Detail = ({movie}) => {
   const rating = movie.rating;
 
   const getLeadingActor = () => {
-    if (actors.length > 3)
-      return actors.slice(0, 2).toString();
+    if (actors.length > 3) return actors.slice(0, 2).toString();
     else return actors.toString();
   };
 
@@ -20,7 +17,7 @@ export const Detail = ({movie}) => {
     let date = new Date(year_of_release);
     return `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
   };
-  
+
   return (
     <List>
       <List.Item>
