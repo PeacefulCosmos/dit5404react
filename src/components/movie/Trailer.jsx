@@ -1,7 +1,6 @@
 import React from "react";
 
-function Trailer() {
+export const Trailer = () => {
   return <span>Trailer</span>;
 }
 
-export default Trailer;

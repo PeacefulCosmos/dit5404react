@@ -1,14 +1,19 @@
-import React from "react";
+
 import { List } from "semantic-ui-react";
 
-function Detail(props) {
-  console.log(props);
+export const Detail = ({movie}) => {
+  
+  const actors = movie.actor;
+  const title = movie.title;
+  const duration = movie.duration_of_movie;
+  const director = movie.director;
+  const releaseDate = movie.year_of_release;
+  const rating = movie.rating;
 
   const getLeadingActor = () => {
-    // console.log(props.movie.actor.length);
-    if (props.movie.actor.length > 3)
-      return props.movie.actor.slice(0, 2).toString();
-    else return props.movie.actor.toString();
+    if (actors.length > 3)
+      return actors.slice(0, 2).toString();
+    else return actors.toString();
   };
 
   const dateParser = (year_of_release) => {
@@ -19,25 +24,23 @@ function Detail(props) {
   return (
     <List>
       <List.Item>
-        <h1>{props.movie.title}</h1>
+        <h1>{title}</h1>
       </List.Item>
       <List.Item>
-        <h2>Duration: {props.movie.duration_of_movie} mins</h2>
+        <h2>Duration: {duration} mins</h2>
       </List.Item>
       <List.Item>
-        <h2>Director: {props.movie.director}</h2>
+        <h2>Director: {director}</h2>
       </List.Item>
       <List.Item>
         <h2>Leading Actor/Actress: {getLeadingActor()}</h2>
       </List.Item>
       <List.Item>
-        <h2>Year of release: {dateParser(props.movie.year_of_release)}</h2>
+        <h2>Year of release: {dateParser(releaseDate)}</h2>
       </List.Item>
       <List.Item>
-        <h2>Rating: {props.movie.rating}</h2>
+        <h2>Rating: {rating}</h2>
       </List.Item>
     </List>
   );
-}
-
-export default Detail;
+};
