@@ -1,7 +1,7 @@
 import React from "react";
 
-function Trailer() {
-  return <span>Trailer</span>;
+function Trailer(props) {
+  return <span>{props.movie.trailer}</span>;
 }
 
 export default Trailer;

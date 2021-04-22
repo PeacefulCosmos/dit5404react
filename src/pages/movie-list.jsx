@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Table, Menu, Icon, Image } from "semantic-ui-react";
 import { MovieCard } from "../components/movie/movieCard";
 // TODO: Named import -- best practice
-import Poster from "../components/movie/poster";
 import Paginator from "../components/shared/paginator";
 
 function MovieList(props) {
@@ -42,6 +41,7 @@ function MovieList(props) {
   };
 
   return (
+
     <Table celled inverted selectable>
       <Table.Body>
         {currentMovies.map((movie) => (
@@ -66,7 +66,9 @@ function MovieList(props) {
         </Table.Row>
       </Table.Footer>
     </Table>
+    
   );
 }
+
 
 export default MovieList;

@@ -7,6 +7,12 @@ import { Counter } from "./components/counter";
 import Main from "./pages/main";
 // TODO: Try to use named export, best-practice
 import MovieList from "./pages/movie-list";
+import Poster from "./components/movie/poster";
+import Nav from "./components/shared/nav";
+import {BrowserRouter as Router ,Switch, Route} from 'react-router-dom';
+
+
+
 import { useState } from "react";
 
 // TODO: Search `TODO` in your IDE to see reviewed code
@@ -26,9 +32,20 @@ function App() {
   // TODO: add curly braces after if, best-practice if(something) {}
   // Nice error handling, but change Error! to something meaningful
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error!</p>;
+  //if (error) return <p>Error!</p>;
 
-  return <MovieList movies={data} />;
+  // return <MovieList movies={data} />;
+  return (
+    <Router>
+      <div>
+        <Nav/>
+        <Switch>
+          <Route path="./pages/main" component={Main}/>
+          <Route path="./pages/movie-list" component={MovieList}/>
+        </Switch>
+      </div>
+    </Router>
+  );
 }
 
 export default App;

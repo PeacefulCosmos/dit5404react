@@ -9,11 +9,13 @@ import Nav from "../components/shared/nav";
 function Main() {
   return (
     <div>
+      
       <Nav />
       <Detail />
       <Poster />
       <Trailer />
     </div>
+
   );
 }
 
