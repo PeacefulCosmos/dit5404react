@@ -1,0 +1,7 @@
+.trailer-iframe {
+}
+
+.ui.embed iframe {
+  width: 500;
+  height: 250;
+}
