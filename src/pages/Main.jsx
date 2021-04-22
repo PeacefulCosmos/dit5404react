@@ -1,17 +1,12 @@
-
-import {Detail} from "../components/movie/Detail";
-import {Poster} from "../components/movie/Poster";
-import {Trailer} from "../components/movie/Trailer";
-import {Nav} from "../components/shared/Nav";
+import { Detail } from "../components/movie/Detail";
+import { Poster } from "../components/movie/Poster";
+import { Trailer } from "../components/movie/Trailer";
+import { Nav } from "../components/shared/Nav";
 
 export const Main = () => {
   return (
     <div>
-      <Nav />
-      <Detail />
-      <Poster />
-      <Trailer />
+      <span>main</span>
     </div>
   );
-}
-
+};

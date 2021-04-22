@@ -5,6 +5,8 @@ import { Paginator } from "../components/shared/Paginator";
 import { usePaginator } from "../util/usePaginator";
 
 export const MovieList = (props) => {
+  // console.log(this.props);
+  console.log(props);
   const [movies, setMovies] = useState(props.movies);
   const [currentPage, setCurrentPage] = useState(1);
   const [moviesPerPage] = useState(5);
