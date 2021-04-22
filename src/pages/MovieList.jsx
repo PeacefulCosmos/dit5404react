@@ -5,19 +5,27 @@ import { Paginator } from "../components/shared/Paginator";
 import { usePaginator } from '../util/usePaginator'
 
 export const MovieList = (props) => {
-  const [movies, setMovies] = useState(props.movies);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [moviesPerPage] = useState(5);
+  // TODO: please add default value for movies, you forgot to handle if the response is undefined
+  const [movies, setMovies] = useState(props.movies ?? []);
+  const [page, setPage] = useState(1);
+  // TODO: if this cannot be changed, why useState ?
+  const [size] = useState(5);
 
+  // TODO: no need to use useEffect, since page & size change will automatically re-render
+  // TODO: besides, movie fetching should be done in this component, not in App.js
+  // TODO: One more tip, useEffect should place after all other hooks;
   useEffect(() => {
-    setMovies(props.movies);
+    if(props.movies) {
+      setMovies(props.movies);
+    }
   }, [props.movies]);
 
-  const {currentMovies, totalMoviesPages} = usePaginator(movies, currentPage, moviesPerPage)
+  const {currentMovies, totalMoviesPages} = usePaginator(movies, page, size)
 
-  const getCurrentPage = (pageNumber) => {
-    return setCurrentPage(pageNumber);
-  }
+  // TODO: why don't you pass the setCurrentPage directly as props ?
+  // const getCurrentPage = (pageNumber) => {
+  //   return setCurrentPage(pageNumber);
+  // }
 
   return (
     <Table celled inverted selectable>
@@ -34,11 +42,10 @@ export const MovieList = (props) => {
         <Table.Row>
           <Table.HeaderCell colSpan="5">
             <Paginator
-              moviesPerPage={moviesPerPage}
-              totalMovies={movies.length}
-              page={currentPage}
-              size={totalMoviesPages}
-              paginate={getCurrentPage}
+              size={size}
+              page={page}
+              setPage={setPage}
+              totalPage={totalMoviesPages}
             />
           </Table.HeaderCell>
         </Table.Row>
