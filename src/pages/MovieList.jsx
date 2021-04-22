@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Table } from "semantic-ui-react";
+import { Table, Modal, Button } from "semantic-ui-react";
 import { MovieCard } from "../components/movie/MovieCard";
 import { Paginator } from "../components/shared/Paginator";
 import { usePaginator } from "../util/usePaginator";
@@ -31,7 +31,14 @@ export const MovieList = (props) => {
         {currentMovies.map((movie) => (
           <Table.Row key={movie.movie_id}>
             <Table.Cell>
-              <MovieCard movie={movie} />
+              <Modal
+                trigger={
+                  <a inverted>
+                    <MovieCard movie={movie} />
+                  </a>
+                }
+                header="Movie Detail"
+              />
             </Table.Cell>
           </Table.Row>
         ))}
