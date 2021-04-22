@@ -4,7 +4,7 @@ import {Poster} from "../components/movie/Poster";
 import {Trailer} from "../components/movie/Trailer";
 import {Nav} from "../components/shared/Nav";
 
-function Main() {
+export const Main = () => {
   return (
     <div>
       <Nav />
@@ -15,4 +15,3 @@ function Main() {
   );
 }
 
-export default Main;
