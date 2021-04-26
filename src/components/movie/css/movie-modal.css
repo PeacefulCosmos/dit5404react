@@ -1,0 +1,4 @@
+#movie-modal {
+  left: 50%;
+  transform: translateX(-50%);
+}

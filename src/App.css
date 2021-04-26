@@ -13,9 +13,8 @@
   }
 }
 
-
-.test{
-  display:block
+.test {
+  display: block;
 }
 
 .App-header {
@@ -43,8 +42,8 @@
   }
 }
 
-nav{
-  display:flex;
+nav {
+  display: flex;
   justify-content: space-around;
   align-items: center;
   min-height: 10vh;
@@ -52,9 +51,9 @@ nav{
   color: white;
 }
 
-.nav-links{
+.nav-links {
   width: 40%;
-  display:flex;
+  display: flex;
   justify-content: space-around;
   align-items: center;
   list-style: none;

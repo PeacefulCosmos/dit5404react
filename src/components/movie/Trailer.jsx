@@ -3,7 +3,7 @@ import { Embed } from "semantic-ui-react";
 import "./css/trailer.css";
 
 export const Trailer = ({ movie }) => {
-  const [movieState, setMovieState] = useState(movie);
+  const [movieState] = useState(movie);
 
   return (
     <div>

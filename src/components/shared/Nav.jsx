@@ -1,8 +1,8 @@
 import React from "react";
-import "../../../src/App.css";
 import { Link } from "react-router-dom";
 import { Icon } from "semantic-ui-react";
-import { Container, Menu, Sticky } from "semantic-ui-react";
+import { Container, Menu } from "semantic-ui-react";
+import "../../../src/App.css";
 
 export const Nav = () => {
   // const navStyle = {

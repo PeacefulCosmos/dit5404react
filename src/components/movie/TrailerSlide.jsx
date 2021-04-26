@@ -5,10 +5,11 @@ import {
   ButtonBack,
   ButtonNext,
 } from "pure-react-carousel";
-import { Button, Container } from "semantic-ui-react";
 import { Trailer } from "./Trailer";
-export const TrailerSlide = ({ movies }) => {
-  console.log(movies[0].movie_id);
+import { useMovieState } from "../context/MovieProvider";
+
+export const TrailerSlide = () => {
+  const { movies } = useMovieState();
   return (
     // <Container>
     <CarouselProvider

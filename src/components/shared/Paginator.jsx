@@ -1,50 +1,35 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Menu, Icon } from "semantic-ui-react";
 
-// TODO: props: page, setPage, size, setSize
-export const Paginator = ({
-  moviesPerPage,
-  totalMovies,
-  page,
-  size,
-  paginate,
-}) => {
-  const [currentPage, setCurrentPage] = useState(page);
-  const [totalMoviesPages] = useState(size);
-  const pageNumbers = [];
+export const Paginator = ({ pageIndex, totalPage, setPageIndex }) => {
+  const pageNumbers = [...new Array(totalPage)];
 
   useEffect(() => {
-    setCurrentPage(page);
-  }, [page]);
+    window.scrollTo({ top: 0 });
+  }, [pageIndex]);
 
-  const previousPage = (currentPage) => {
-    if (currentPage > 1) {
-      return currentPage - 1;
+  const previousPage = () => {
+    if (pageIndex > 1) {
+      return setPageIndex(pageIndex - 1);
     }
-    return currentPage;
   };
-  const nextPage = (currentPage) => {
-    if (currentPage < totalMoviesPages) {
-      return currentPage + 1;
+  const nextPage = () => {
+    if (pageIndex < pageNumbers) {
+      return setPageIndex(pageIndex + 1);
     }
-    return currentPage;
   };
-
-  for (let i = 1; i <= Math.ceil(totalMovies / moviesPerPage); i++) {
-    pageNumbers.push(i);
-  }
 
   return (
     <Menu floated="right" pagination>
-      <Menu.Item onClick={() => paginate(previousPage(currentPage))} icon>
+      <Menu.Item onClick={previousPage} icon>
         <Icon name="chevron left" />
       </Menu.Item>
-      {pageNumbers.map((number) => (
-        <Menu.Item key={number} onClick={() => paginate(number)}>
-          {number}
+      {pageNumbers.map((_, number) => (
+        <Menu.Item key={number + 1} onClick={() => setPageIndex(number + 1)}>
+          {number + 1}
         </Menu.Item>
       ))}
-      <Menu.Item onClick={() => paginate(nextPage(currentPage))} icon>
+      <Menu.Item onClick={nextPage} icon>
         <Icon name="chevron right" />
       </Menu.Item>
     </Menu>

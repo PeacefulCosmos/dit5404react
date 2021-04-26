@@ -1,73 +1,53 @@
-import { useEffect, useState } from "react";
-import { Table, Modal, Button, Grid } from "semantic-ui-react";
+import { useState } from "react";
+import { Table } from "semantic-ui-react";
 import { MovieCard } from "../components/movie/MovieCard";
 import { Paginator } from "../components/shared/Paginator";
 import { usePaginator } from "../util/usePaginator";
-import { Trailer } from "../components/movie/Trailer";
+import { useMovieState } from "../components/context/MovieProvider";
+import { MovieModal } from "../components/movie/MovieModal";
 
-export const MovieList = (props) => {
-  // console.log(this.props);
-  console.log(props);
-  const [movies, setMovies] = useState(props.movies);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [moviesPerPage] = useState(5);
-
-  useEffect(() => {
-    setMovies(props.movies);
-  }, [props.movies]);
+export const MovieList = () => {
+  const { movies } = useMovieState();
+  const [pageIndex, setPageIndex] = useState(1);
+  const [selectedMovie, setSelectedMovie] = useState(null);
+  const pageSize = 5;
 
   const { currentMovies, totalMoviesPages } = usePaginator(
     movies,
-    currentPage,
-    moviesPerPage
+    pageIndex,
+    pageSize
   );
 
-  const getCurrentPage = (pageNumber) => {
-    return setCurrentPage(pageNumber);
-  };
+  const renderCards = (movie) => (
+    <Table.Row key={movie.movie_id}>
+      <Table.Cell>
+        <div onClick={() => setSelectedMovie(movie)}>
+          <MovieCard movie={movie} />
+        </div>
+      </Table.Cell>
+    </Table.Row>
+  );
 
   return (
-    <Table celled inverted selectable>
-      <Table.Body>
-        {currentMovies.map((movie) => (
-          <Table.Row key={movie.movie_id}>
-            <Table.Cell>
-              <Modal
-                trigger={
-                  <a inverted>
-                    <MovieCard movie={movie} />
-                  </a>
-                }
-              >
-                <Modal.Header>Movie Detail</Modal.Header>
-                <Modal.Content image scrolling>
-                  <Table>
-                    <Table.Row>
-                      <MovieCard movie={movie} />
-                    </Table.Row>
-                    <Table.Row>
-                      <Trailer movie={movie} />
-                    </Table.Row>
-                  </Table>
-                </Modal.Content>
-              </Modal>
-            </Table.Cell>
-          </Table.Row>
-        ))}
-      </Table.Body>
+    <Table celled inverted selectable style={{ cursor: "pointer" }}>
+      <Table.Body>{currentMovies.map(renderCards)}</Table.Body>
       <Table.Footer>
         <Table.Row>
           <Table.HeaderCell colSpan="5">
             <Paginator
-              moviesPerPage={moviesPerPage}
-              totalMovies={movies.length}
-              page={currentPage}
-              size={totalMoviesPages}
-              paginate={getCurrentPage}
+              pageIndex={pageIndex}
+              totalPage={totalMoviesPages}
+              setPageIndex={setPageIndex}
             />
           </Table.HeaderCell>
         </Table.Row>
       </Table.Footer>
+      {selectedMovie && (
+        <MovieModal
+          movie={selectedMovie}
+          onClose={() => setSelectedMovie(null)}
+        />
+      )}
     </Table>
   );
 };
