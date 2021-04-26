@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { Table, Modal, Button } from "semantic-ui-react";
+import { Table, Modal, Button, Grid } from "semantic-ui-react";
 import { MovieCard } from "../components/movie/MovieCard";
 import { Paginator } from "../components/shared/Paginator";
 import { usePaginator } from "../util/usePaginator";
+import { Trailer } from "../components/movie/Trailer";
 
 export const MovieList = (props) => {
   // console.log(this.props);
@@ -37,8 +38,19 @@ export const MovieList = (props) => {
                     <MovieCard movie={movie} />
                   </a>
                 }
-                header="Movie Detail"
-              />
+              >
+                <Modal.Header>Movie Detail</Modal.Header>
+                <Modal.Content image scrolling>
+                  <Table>
+                    <Table.Row>
+                      <MovieCard movie={movie} />
+                    </Table.Row>
+                    <Table.Row>
+                      <Trailer movie={movie} />
+                    </Table.Row>
+                  </Table>
+                </Modal.Content>
+              </Modal>
             </Table.Cell>
           </Table.Row>
         ))}
