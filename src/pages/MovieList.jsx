@@ -22,7 +22,7 @@ export const MovieList = () => {
     <Table.Row key={movie.movie_id}>
       <Table.Cell>
         <div onClick={() => setSelectedMovie(movie)}>
-          <MovieCard movie={movie} />
+          <MovieCard movie={movie} columns={4} />
         </div>
       </Table.Cell>
     </Table.Row>
