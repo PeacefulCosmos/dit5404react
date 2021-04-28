@@ -1,0 +1,29 @@
+.ui.centered.grid > .column:not(.aligned):not(.justified):not(.row),
+.ui.centered.grid > .row > .column:not(.aligned):not(.justified),
+.ui.grid .centered.row > .column:not(.aligned):not(.justified) {
+  margin-bottom: 10%;
+}
+
+.featureMovieCard {
+  height: 650px;
+}
+
+.ui.centered.card {
+  background: black;
+
+  height: 650px;
+}
+
+div {
+  color: bisque;
+}
+
+.featureMovieCardContent {
+  color: bisque;
+}
+
+.ui.card > .content > .header:not(.ui),
+.ui.cards > .card > .content > .header:not(.ui) {
+  color: red;
+  font-size: 20px;
+}

@@ -19,14 +19,15 @@ function App() {
       <Sticky>
         <Nav />
       </Sticky>
-
-      <MovieProvider>
-        <Switch>
-          <Route path="/main" component={Main} />
-          <Route path="/movielist" component={MovieList} />
-          <Redirect to="/main" />
-        </Switch>
-      </MovieProvider>
+      <div className="content">
+        <MovieProvider>
+          <Switch>
+            <Route exact path="/main" component={Main} />
+            <Route path="/movielist" component={MovieList} />
+            <Redirect to="/main" />
+          </Switch>
+        </MovieProvider>
+      </div>
     </Router>
   );
 }

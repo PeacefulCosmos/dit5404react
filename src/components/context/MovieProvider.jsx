@@ -10,6 +10,7 @@ const initialState = {
 const MovieContext = React.createContext(initialState);
 
 export const useMovieState = () => React.useContext(MovieContext);
+export const useFeatureMovieState = () => React.useContext(MovieContext);
 
 export const MovieProvider = ({ children }) => {
   const [{ data, loading }] = useAxios(`${environment.baseUrl.api}/movie`);

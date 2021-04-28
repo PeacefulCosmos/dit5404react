@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal, Table } from "semantic-ui-react";
 import { Trailer } from "./Trailer";
-import { MovieCard } from "./MovieCard";
+import { MovieGrid } from "./MovieGrid";
 import "./css/movie-modal.css";
 
 export const MovieModal = ({ movie, onClose }) => {
@@ -14,7 +14,7 @@ export const MovieModal = ({ movie, onClose }) => {
             <Trailer movie={movie} />
           </Table.Row>
           <Table.Row>
-            <MovieCard movie={movie} />
+            <MovieGrid movie={movie} />
           </Table.Row>
         </Table>
       </Modal.Content>

@@ -1,0 +1,55 @@
+.slider {
+  padding: 60px;
+}
+
+.buttonBack {
+  border: none;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  background-color: #f1f1f193;
+  color: black;
+  font-size: 30px;
+  width: 45px;
+  height: 50px;
+}
+
+.buttonNext {
+  border: none;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  background-color: #f1f1f193;
+  color: black;
+  font-size: 30px;
+  width: 45px;
+  height: 50px;
+}
+
+.buttonBack:hover {
+  border: none;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  background-color: rgba(221, 221, 221, 0.315);
+  color: black;
+  font-size: 30px;
+}
+
+.buttonNext:hover {
+  border: none;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  background-color: rgba(221, 221, 221, 0.315);
+  color: black;
+  font-size: 30px;
+}
+
+.round {
+  border-radius: 50%;
+}

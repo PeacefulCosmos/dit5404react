@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Table } from "semantic-ui-react";
-import { MovieCard } from "../components/movie/MovieCard";
+import { MovieGrid } from "../components/movie/MovieGrid";
 import { Paginator } from "../components/shared/Paginator";
 import { usePaginator } from "../util/usePaginator";
 import { useMovieState } from "../components/context/MovieProvider";
@@ -22,7 +22,7 @@ export const MovieList = () => {
     <Table.Row key={movie.movie_id}>
       <Table.Cell>
         <div onClick={() => setSelectedMovie(movie)}>
-          <MovieCard movie={movie} columns={4} />
+          <MovieGrid movie={movie} columns={2} />
         </div>
       </Table.Cell>
     </Table.Row>
