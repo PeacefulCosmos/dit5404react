@@ -6,18 +6,16 @@ export const Trailer = ({ movie }) => {
   const [movieState] = useState(movie);
 
   return (
-    <div>
-      <Embed
-        aspectRatio="16:9"
-        autoplay={false}
-        brandedUI
-        color="white"
-        hd={false}
-        id={movieState.trailer}
-        placeholder={movieState.backdrop}
-        source="youtube"
-      />
-    </div>
+    <Embed
+      aspectRatio="16:9"
+      autoplay={false}
+      brandedUI
+      color="white"
+      hd={false}
+      id={movieState.trailer}
+      placeholder={movieState.backdrop}
+      source="youtube"
+    />
   );
 
   // return (

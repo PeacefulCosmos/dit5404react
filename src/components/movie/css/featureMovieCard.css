@@ -1,22 +1,27 @@
-.ui.centered.grid > .column:not(.aligned):not(.justified):not(.row),
+/* .ui.centered.grid > .column:not(.aligned):not(.justified):not(.row),
 .ui.centered.grid > .row > .column:not(.aligned):not(.justified),
 .ui.grid .centered.row > .column:not(.aligned):not(.justified) {
+  margin-bottom: 10%;
+} */
+
+.featureMovieCardContainer {
   margin-bottom: 10%;
 }
 
 .featureMovieCard {
   height: 650px;
+  background-color: rgb(128, 124, 124);
 }
 
 .ui.centered.card {
-  background: black;
+  background: rgb(128, 124, 124);
 
-  height: 650px;
+  height: 670px;
 }
 
-div {
+/* div {
   color: bisque;
-}
+} */
 
 .featureMovieCardContent {
   color: bisque;
@@ -24,6 +29,17 @@ div {
 
 .ui.card > .content > .header:not(.ui),
 .ui.cards > .card > .content > .header:not(.ui) {
-  color: red;
+  color: rgb(0, 0, 0);
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 20px;
+}
+
+.ui.card .meta,
+.ui.cards > .card .meta {
+  color: bisque;
+}
+
+.ui.card > .content,
+.ui.cards > .card > .content {
+  margin: 5px 2px 2px 3px;
 }

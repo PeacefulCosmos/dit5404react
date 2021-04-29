@@ -1,7 +1,7 @@
 import { List, Item } from "semantic-ui-react";
 import Rating from "@material-ui/lab/Rating";
 
-export const Detail = ({ movie }) => {
+export const MovdalMovieDetail = ({ movie }) => {
   const actors = movie.actor;
   const title = movie.title;
   const duration = movie.duration_of_movie;
@@ -39,7 +39,6 @@ export const Detail = ({ movie }) => {
       <List.Item>
         <span style={{ fontSize: "20px" }}>Rating: {rating} </span>
         <Rating
-          readOnly
           size="large"
           name="customized-10"
           defaultValue={rating}

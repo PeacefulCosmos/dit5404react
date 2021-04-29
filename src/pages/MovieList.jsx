@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Table } from "semantic-ui-react";
+import { Container, Table, Divider } from "semantic-ui-react";
 import { MovieGrid } from "../components/movie/MovieGrid";
 import { Paginator } from "../components/shared/Paginator";
 import { usePaginator } from "../util/usePaginator";
 import { useMovieState } from "../components/context/MovieProvider";
 import { MovieModal } from "../components/movie/MovieModal";
+import "./css/movieList.css";
 
 export const MovieList = () => {
   const { movies } = useMovieState();
@@ -24,30 +25,38 @@ export const MovieList = () => {
         <div onClick={() => setSelectedMovie(movie)}>
           <MovieGrid movie={movie} columns={2} />
         </div>
+        {/* <span>11111111111111111111</span> */}
       </Table.Cell>
     </Table.Row>
   );
 
   return (
-    <Table celled inverted selectable style={{ cursor: "pointer" }}>
-      <Table.Body>{currentMovies.map(renderCards)}</Table.Body>
-      <Table.Footer>
-        <Table.Row>
-          <Table.HeaderCell colSpan="5">
-            <Paginator
-              pageIndex={pageIndex}
-              totalPage={totalMoviesPages}
-              setPageIndex={setPageIndex}
+    <Container>
+      <Divider horizontal>
+        <span className="featureDivider">Lastest Movie</span>
+      </Divider>
+      <Container className="movieListTable">
+        <Table celled inverted selectable>
+          <Table.Body>{currentMovies.map(renderCards)}</Table.Body>
+          <Table.Footer>
+            <Table.Row>
+              <Table.HeaderCell colSpan="5">
+                <Paginator
+                  pageIndex={pageIndex}
+                  totalPage={totalMoviesPages}
+                  setPageIndex={setPageIndex}
+                />
+              </Table.HeaderCell>
+            </Table.Row>
+          </Table.Footer>
+          {selectedMovie && (
+            <MovieModal
+              movie={selectedMovie}
+              onClose={() => setSelectedMovie(null)}
             />
-          </Table.HeaderCell>
-        </Table.Row>
-      </Table.Footer>
-      {selectedMovie && (
-        <MovieModal
-          movie={selectedMovie}
-          onClose={() => setSelectedMovie(null)}
-        />
-      )}
-    </Table>
+          )}
+        </Table>
+      </Container>
+    </Container>
   );
 };
