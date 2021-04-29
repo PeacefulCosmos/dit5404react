@@ -14,7 +14,7 @@ export const Paginator = ({ pageIndex, totalPage, setPageIndex }) => {
     }
   };
   const nextPage = () => {
-    if (pageIndex < pageNumbers) {
+    if (pageIndex < totalPage) {
       return setPageIndex(pageIndex + 1);
     }
   };
