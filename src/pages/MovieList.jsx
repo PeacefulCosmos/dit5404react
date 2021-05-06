@@ -25,7 +25,6 @@ export const MovieList = () => {
         <div onClick={() => setSelectedMovie(movie)}>
           <MovieGrid movie={movie} columns={2} />
         </div>
-        {/* <span>11111111111111111111</span> */}
       </Table.Cell>
     </Table.Row>
   );

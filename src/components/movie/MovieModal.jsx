@@ -6,6 +6,7 @@ import { MovieGrid } from "./MovieGrid";
 import "./css/movie-modal.css";
 import { Poster } from "./Poster";
 import { Detail } from "./Detail";
+import { fiveStarRatingService } from "../../service/five-start-rating";
 
 export const MovieModal = ({ movie, onClose }) => {
   const actors = movie.actor;
@@ -23,6 +24,10 @@ export const MovieModal = ({ movie, onClose }) => {
   const dateParser = (year_of_release) => {
     let date = new Date(year_of_release);
     return `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
+  };
+
+  const setFiveStarRating = (e) => {
+    fiveStarRatingService.setRating(e.target.value);
   };
 
   return (
@@ -64,6 +69,7 @@ export const MovieModal = ({ movie, onClose }) => {
                         name="customized-10"
                         defaultValue={rating}
                         max={10}
+                        onChange={setFiveStarRating}
                       />
                     </List>
                   </Grid.Column>
@@ -80,12 +86,6 @@ export const MovieModal = ({ movie, onClose }) => {
           </Modal.Description>
         </Container>
       </Modal.Content>
-      {/* <Modal.Content image scrolling>
-        <Trailer movie={movie} />
-        <MovieGrid movie={movie} />
-      </Modal.Content> */}
     </Modal>
   );
 };
-
-// id="movie-modal"
