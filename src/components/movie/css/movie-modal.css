@@ -1,8 +1,12 @@
 #movie-modal {
   /* left: 50%;
-  transform: translateX(-50%);
-  width: 1400px; */
+  transform: translateX(-50%);*/
+  /* width: 1400px; */
   background-color: rgba(34, 31, 31, 0.829);
+}
+
+.modal-list-item {
+  margin-bottom: 10px;
 }
 
 .ui.modal .scrolling.content {

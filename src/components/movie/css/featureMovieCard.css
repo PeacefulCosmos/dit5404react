@@ -10,13 +10,18 @@
 
 .featureMovieCard {
   height: 650px;
-  background-color: rgb(128, 124, 124);
+  background-color: rgb(149, 147, 147);
 }
 
-.ui.centered.card {
-  background: rgb(128, 124, 124);
+/* .ui.card > .content,
+.ui.cards > .card > .content {
+  height: 150px;
+} */
 
-  height: 600px;
+.ui.centered.card {
+  background: rgb(149, 147, 147);
+
+  height: 650px;
 }
 
 /* div {

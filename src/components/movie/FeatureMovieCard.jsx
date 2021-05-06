@@ -19,15 +19,17 @@ export const FeatureMovieCard = ({ movie, size }) => {
     <Container className="featureMovieCardContainer">
       <Card centered className="featureMovieCard">
         <Poster movie={movie} size={size} />
+        {/* <div className="movie-detail"> */}
         <Card.Content>
           <Card.Header className="featureMovieCardHeader">{title}</Card.Header>
-          <Card.Meta></Card.Meta>
+          <Card.Meta>{duration} minutes</Card.Meta>
           <Card.Description>
-            <div>{duration} minutes</div>
+            <div></div>
             <div>Director: {director}</div>
             <div>Starring: {getLeadingActor()}</div>
           </Card.Description>
         </Card.Content>
+        {/* </div> */}
         <Card.Content extra>
           <Rating
             disabled

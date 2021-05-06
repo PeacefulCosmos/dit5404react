@@ -1,5 +1,5 @@
-import React from "react";
-import { Container, Modal, Grid, List, Item } from "semantic-ui-react";
+import React, { useState } from "react";
+import { Container, Modal, Grid, List, Item, Divider } from "semantic-ui-react";
 import Rating from "@material-ui/lab/Rating";
 import { Trailer } from "./Trailer";
 import { MovieGrid } from "./MovieGrid";
@@ -9,11 +9,16 @@ import { Detail } from "./Detail";
 import { fiveStarRatingService } from "../../service/five-start-rating";
 
 export const MovieModal = ({ movie, onClose }) => {
+  const [id] = useState(movie.movie_id);
+  const [marked, setMarked] = useState(false);
+  // const [rating, ]
   const actors = movie.actor;
   const title = movie.title;
   const duration = movie.duration_of_movie;
   const director = movie.director;
   const releaseDate = movie.year_of_release;
+  const description = movie.overview;
+  const category = movie.category;
   const rating = movie.vote_average;
 
   const getLeadingActor = () => {
@@ -27,16 +32,18 @@ export const MovieModal = ({ movie, onClose }) => {
   };
 
   const setFiveStarRating = (e) => {
-    fiveStarRatingService.setRating(e.target.value);
+    const newRating = ((rating + parseInt(e.target.value, 10)) / 2).toFixed(1);
+    fiveStarRatingService.setRating(id, newRating);
+    setMarked(true);
   };
 
   return (
     <Modal open onClose={onClose}>
-      <Modal.Header>{movie.title}</Modal.Header>
-      <Modal.Content image>
-        <Container fluid>
+      <Modal.Header>{title}</Modal.Header>
+      <Modal.Content image scrolling>
+        <Container>
           <Modal.Description>
-            <Container fluid>
+            <Container>
               <Grid columns={2}>
                 <Grid.Row>
                   <Grid.Column>
@@ -45,33 +52,53 @@ export const MovieModal = ({ movie, onClose }) => {
                   <Grid.Column>
                     <List>
                       <List.Item>
-                        <h1>{movie.title}</h1>
+                        <div className="modal-list-item">
+                          <h1>{movie.title}</h1>
+                        </div>
                       </List.Item>
                       <List.Item>
-                        <h2>Duration: </h2> <h3>{duration} mins</h3>
+                        <div className="modal-list-item">
+                          <h2>Duration: </h2> <h4>{duration} mins</h4>
+                        </div>
                       </List.Item>
                       <List.Item>
-                        <h2>Director: {director}</h2>
+                        <div className="modal-list-item">
+                          <h2>Director: </h2> <h4>{director}</h4>
+                        </div>
                       </List.Item>
                       <List.Item>
-                        <h2>Leading Actor/Actress: {getLeadingActor()}</h2>
+                        <div className="modal-list-item">
+                          <h2>Starring: </h2>
+                          <h4>{getLeadingActor()}</h4>
+                        </div>
                       </List.Item>
                       <List.Item>
-                        <h2>Year of release: {dateParser(releaseDate)}</h2>
+                        <div className="modal-list-item">
+                          <h2>Year of release: </h2>
+                          <h4>{dateParser(releaseDate)}</h4>
+                        </div>
                       </List.Item>
                       <List.Item>
-                        <span style={{ fontSize: "20px" }}>
-                          Rating: {rating}
-                        </span>
+                        <h2>Rating: {rating}</h2>
                       </List.Item>
                       <Rating
                         size="large"
+                        readOnly={marked}
                         name="customized-10"
                         defaultValue={rating}
                         max={10}
                         onChange={setFiveStarRating}
                       />
                     </List>
+                  </Grid.Column>
+                </Grid.Row>
+              </Grid>
+              <Grid columns={1}>
+                <Grid.Row>
+                  <Grid.Column>
+                    <h1 style={{ "margin-top": "10px" }}>Overview</h1>
+                    <Divider></Divider>
+                    <h4>{description}</h4>
                   </Grid.Column>
                 </Grid.Row>
               </Grid>
