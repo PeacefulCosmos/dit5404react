@@ -36,6 +36,7 @@ export const FeatureMovieCard = ({ movie, size }) => {
             name="customized-10"
             defaultValue={rating}
             max={10}
+            readOnly={true}
           />
           <div>rating: {rating}</div>
         </Card.Content>

@@ -38,7 +38,7 @@ export const MovieModal = ({ movie, onClose }) => {
   const setFiveStarRating = (e) => {
     const newRating = ((rating + parseInt(e.target.value, 10)) / 2).toFixed(1);
     fiveStarRatingService.setRating(id, newRating);
-    setRating(newRating);
+    // setRating(newRating);
     setMarked(true);
   };
 
@@ -89,13 +89,17 @@ export const MovieModal = ({ movie, onClose }) => {
                         </div>
                       </List.Item>
                       <List.Item>
-                        <h2>Rating: {rating}</h2>
+                        <h2>Current Rating:</h2>
+                        <h4>{rating}</h4>
+                      </List.Item>
+                      <List.Item>
+                        <h2>Your Rating: </h2>
                       </List.Item>
                       <Rating
                         size="large"
                         readOnly={marked}
                         name="customized-10"
-                        value={rating}
+                        defaultValue={null}
                         max={10}
                         onChange={setFiveStarRating}
                       />
