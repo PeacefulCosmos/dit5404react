@@ -11,6 +11,7 @@ import { fiveStarRatingService } from "../../service/five-start-rating";
 export const MovieModal = ({ movie, onClose }) => {
   const [id] = useState(movie.movie_id);
   const [marked, setMarked] = useState(false);
+  const [rating, setRating] = useState(movie.vote_average);
   // const [rating, ]
   const actors = movie.actor;
   const title = movie.title;
@@ -19,7 +20,6 @@ export const MovieModal = ({ movie, onClose }) => {
   const releaseDate = movie.year_of_release;
   const description = movie.overview;
   const category = movie.category;
-  const rating = movie.vote_average;
 
   const getCategory = () => {
     return category.toString();
@@ -38,6 +38,7 @@ export const MovieModal = ({ movie, onClose }) => {
   const setFiveStarRating = (e) => {
     const newRating = ((rating + parseInt(e.target.value, 10)) / 2).toFixed(1);
     fiveStarRatingService.setRating(id, newRating);
+    setRating(newRating);
     setMarked(true);
   };
 
@@ -94,7 +95,7 @@ export const MovieModal = ({ movie, onClose }) => {
                         size="large"
                         readOnly={marked}
                         name="customized-10"
-                        defaultValue={rating}
+                        value={rating}
                         max={10}
                         onChange={setFiveStarRating}
                       />
