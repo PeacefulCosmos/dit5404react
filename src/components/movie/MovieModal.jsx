@@ -21,6 +21,10 @@ export const MovieModal = ({ movie, onClose }) => {
   const category = movie.category;
   const rating = movie.vote_average;
 
+  const getCategory = () => {
+    return category.toString();
+  };
+
   const getLeadingActor = () => {
     if (actors.length > 3) return actors.slice(0, 2).toString();
     else return actors.toString();
@@ -59,6 +63,11 @@ export const MovieModal = ({ movie, onClose }) => {
                       <List.Item>
                         <div className="modal-list-item">
                           <h2>Duration: </h2> <h4>{duration} mins</h4>
+                        </div>
+                      </List.Item>
+                      <List.Item>
+                        <div className="modal-list-item">
+                          <h2>Category: </h2> <h4>{getCategory()}</h4>
                         </div>
                       </List.Item>
                       <List.Item>
